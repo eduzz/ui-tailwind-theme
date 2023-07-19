@@ -24,3 +24,16 @@ export default createTheme({
   // Não se preocupe com objectos complexos que ele fará merge de tudo
 });
 ```
+
+### Se utiliizar o @eduzz/ui-antd-theme
+
+O AntD já possui um script de reset.css, então mude as configurações a seguir:
+
+```js
+// tailwind.config.js
+import createTheme from '@eduzz/ui-tailwind-theme';
+
+export default createTheme({
+  corePlugins: { preflight: false } // adicione
+});
+```
