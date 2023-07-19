@@ -7,8 +7,13 @@ node_modules
 tsconfig.json
 /**/**/*.tsx
 /**/**/*.ts
+/**/**/*.css
 !/**/**/*.d.ts
 .git
+*.config.js
+*.html
+_dev
+!style.css
 scripts
 *.md
 !README.md

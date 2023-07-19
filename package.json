@@ -1,35 +1,46 @@
 {
-  "name": "@eduzz/ui-tokens",
-  "description": "Eduzz UI Tokens",
-  "version": "1.0.0",
+  "name": "@eduzz/ui-tailwind-theme",
+  "description": "Eduzz UI: Tailwind Theme",
+  "version": "0.0.1",
   "keywords": [
     "eduzz",
-    "tokens"
+    "tokens",
+    "tailwind"
   ],
   "main": "./index.js",
   "types": "./index.d.ts",
   "author": "Eduzz Team",
   "license": "MIT",
   "private": false,
-  "homepage": "https://github.com/eduzz/ui-tokens",
+  "homepage": "https://github.com/eduzz/ui-tailwind-theme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eduzz/ui-tokens"
+    "url": "https://github.com/eduzz/ui-tailwind-theme"
   },
   "bugs": {
-    "url": "https://github.com/eduzz/ui-tokens/issues"
+    "url": "https://github.com/eduzz/ui-tailwind-theme/issues"
   },
   "scripts": {
+    "start": "vite",
     "clean": "git add . && git clean -fdx . -e node_modules",
     "prebuild": "yarn clean && yarn lint",
     "build": "yarn tsc -p tsconfig.json",
     "lint": "eslint . --ext ts,tsx",
     "update-deps": "yarn ncu -u"
   },
+  "dependencies": {
+    "@eduzz/ui-tokens": "^1.0.0",
+    "lodash-es": "^4"
+  },
   "devDependencies": {
     "@eduzz/eslint-config": "^1.0.0",
+    "@types/lodash-es": "^4",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-eslint-plugin": "^5.1.0",
@@ -37,7 +48,12 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "npm-check-updates": "^16.10.15",
+    "postcss": "^8.4.26",
     "prettier": "^3.0.0",
-    "typescript": "^5.1.6"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.4"
   }
 }
