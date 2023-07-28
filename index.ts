@@ -40,7 +40,8 @@ export const defaultTheme: Config = {
         '2xl': tokens.breakpoints.xxl
       },
       fontSize: {
-        'sm': tokens.font.size.xxxs,
+        'xs': tokens.font.size.xxxs,
+        'sm': tokens.font.size.xxs,
         'base': tokens.font.size.xs,
         'xl': tokens.font.size.sm,
         '2xl': tokens.font.size.md,
