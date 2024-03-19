@@ -1,13 +1,18 @@
 {
   "name": "@eduzz/ui-tailwind-theme",
   "description": "Eduzz UI: Tailwind Theme",
-  "version": "1.0.0",
+  "version": "1.1.0-beta.4",
   "keywords": [
     "eduzz",
     "tokens",
     "tailwind"
   ],
   "main": "./index.js",
+  "files": [
+    "styles.css",
+    "index.js",
+    "utils/hextToRgb.js"
+  ],
   "types": "./index.d.ts",
   "author": "Eduzz Team",
   "license": "MIT",
@@ -29,12 +34,13 @@
     "update-deps": "yarn ncu -u"
   },
   "dependencies": {
-    "@eduzz/ui-tokens": "^1.0.0",
+    "@eduzz/ui-tokens": "^1.1.0",
     "lodash-es": "^4"
   },
   "devDependencies": {
     "@eduzz/eslint-config": "^1.0.0",
     "@types/lodash-es": "^4",
+    "@types/node": "^20.11.28",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
