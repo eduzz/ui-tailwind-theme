@@ -8,11 +8,6 @@
     "tailwind"
   ],
   "main": "./index.js",
-  "files": [
-    "styles.css",
-    "index.js",
-    "utils/hextToRgb.js"
-  ],
   "types": "./index.d.ts",
   "author": "Eduzz Team",
   "license": "MIT",
@@ -26,7 +21,7 @@
     "url": "https://github.com/eduzz/ui-tailwind-theme/issues"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "clean": "git add . && git clean -fdx . -e node_modules",
     "prebuild": "yarn clean && yarn lint",
     "build": "yarn tsc -p tsconfig.json",
@@ -35,6 +30,7 @@
   },
   "dependencies": {
     "@eduzz/ui-tokens": "^1.1.0",
+    "@mertasan/tailwindcss-variables": "^2.7.0",
     "lodash-es": "^4"
   },
   "devDependencies": {

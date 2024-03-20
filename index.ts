@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 import merge from 'lodash-es/merge';
 import twDefaultTheme from 'tailwindcss/defaultTheme';
 import type { Config } from 'tailwindcss/types/config';
@@ -14,47 +12,6 @@ const defaultColor = {
   secondary: `var(--eduzz-theme-secondary, ${tokens.brands.eduzz.secondary.pure})`
 };
 
-function writeCssThemeFile() {
-  const cssThemeDefinition = `
-  :root {
-    --eduzz-ui-layout-background-color-1: ${hexToRgbVar(tokens.base.light.background[1])};
-    --eduzz-ui-layout-background-color-2: ${hexToRgbVar(tokens.base.light.background[2])};
-    --eduzz-ui-layout-background-color-3: ${hexToRgbVar(tokens.base.light.background[3])};
-    --eduzz-ui-layout-background-color-4: ${hexToRgbVar(tokens.base.light.background[4])};
-
-    --eduzz-ui-layout-outline-color-1: ${hexToRgbVar(tokens.base.light.outline[1])};
-    --eduzz-ui-layout-outline-color-2: ${hexToRgbVar(tokens.base.light.outline[2])};
-    --eduzz-ui-layout-outline-color-3: ${hexToRgbVar(tokens.base.light.outline[3])};
-
-    --eduzz-ui-layout-content-color-1: ${hexToRgbVar(tokens.base.light.content[1])};
-    --eduzz-ui-layout-content-color-2: ${hexToRgbVar(tokens.base.light.content[2])};
-    --eduzz-ui-layout-content-color-3: ${hexToRgbVar(tokens.base.light.content[3])};
-    --eduzz-ui-layout-content-color-4: ${hexToRgbVar(tokens.base.light.content[4])};
-    --eduzz-ui-layout-content-color-5: ${hexToRgbVar(tokens.base.light.content[5])};
-    --eduzz-ui-layout-content-color-6: ${hexToRgbVar(tokens.base.light.content[6])};
-  }
-
-  body[data-eduzz-theme="dark"] {
-    --eduzz-ui-layout-background-color-1: ${hexToRgbVar(tokens.base.dark.background[1])};
-    --eduzz-ui-layout-background-color-2: ${hexToRgbVar(tokens.base.dark.background[2])};
-    --eduzz-ui-layout-background-color-3: ${hexToRgbVar(tokens.base.dark.background[3])};
-    --eduzz-ui-layout-background-color-4: ${hexToRgbVar(tokens.base.dark.background[4])};
-
-    --eduzz-ui-layout-outline-color-1: ${hexToRgbVar(tokens.base.dark.outline[1])};
-    --eduzz-ui-layout-outline-color-2: ${hexToRgbVar(tokens.base.dark.outline[2])};
-    --eduzz-ui-layout-outline-color-3: ${hexToRgbVar(tokens.base.dark.outline[3])};
-
-    --eduzz-ui-layout-content-color-1: ${hexToRgbVar(tokens.base.dark.content[1])};
-    --eduzz-ui-layout-content-color-2: ${hexToRgbVar(tokens.base.dark.content[2])};
-    --eduzz-ui-layout-content-color-3: ${hexToRgbVar(tokens.base.dark.content[3])};
-    --eduzz-ui-layout-content-color-4: ${hexToRgbVar(tokens.base.dark.content[4])};
-    --eduzz-ui-layout-content-color-5: ${hexToRgbVar(tokens.base.dark.content[5])};
-    --eduzz-ui-layout-content-color-6: ${hexToRgbVar(tokens.base.dark.content[6])};
-  }`;
-
-  fs.writeFileSync(`${__dirname}/style.css`, cssThemeDefinition);
-}
-
 export const defaultTheme: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   darkMode: ['class', 'body[data-eduzz-theme="dark"]'],
@@ -62,6 +19,50 @@ export const defaultTheme: Config = {
     extend: {
       fontFamily: {
         sans: [tokens.font.family.base, ...twDefaultTheme.fontFamily.sans]
+      },
+      variables: {
+        'DEFAULT': {
+          'background-color': {
+            1: hexToRgbVar(tokens.base.light.background[1]),
+            2: hexToRgbVar(tokens.base.light.background[2]),
+            3: hexToRgbVar(tokens.base.light.background[3]),
+            4: hexToRgbVar(tokens.base.light.background[4])
+          },
+          'outline-color': {
+            1: hexToRgbVar(tokens.base.light.outline[1]),
+            2: hexToRgbVar(tokens.base.light.outline[2]),
+            3: hexToRgbVar(tokens.base.light.outline[3])
+          },
+          'content-color': {
+            1: hexToRgbVar(tokens.base.light.content[1]),
+            2: hexToRgbVar(tokens.base.light.content[2]),
+            3: hexToRgbVar(tokens.base.light.content[3]),
+            4: hexToRgbVar(tokens.base.light.content[4]),
+            5: hexToRgbVar(tokens.base.light.content[5]),
+            6: hexToRgbVar(tokens.base.light.content[6])
+          }
+        },
+        'body[data-eduzz-theme="dark"]': {
+          'background-color': {
+            1: hexToRgbVar(tokens.base.dark.background[1]),
+            2: hexToRgbVar(tokens.base.dark.background[2]),
+            3: hexToRgbVar(tokens.base.dark.background[3]),
+            4: hexToRgbVar(tokens.base.dark.background[4])
+          },
+          'outline-color': {
+            1: hexToRgbVar(tokens.base.dark.outline[1]),
+            2: hexToRgbVar(tokens.base.dark.outline[2]),
+            3: hexToRgbVar(tokens.base.dark.outline[3])
+          },
+          'content-color': {
+            1: hexToRgbVar(tokens.base.dark.content[1]),
+            2: hexToRgbVar(tokens.base.dark.content[2]),
+            3: hexToRgbVar(tokens.base.dark.content[3]),
+            4: hexToRgbVar(tokens.base.dark.content[4]),
+            5: hexToRgbVar(tokens.base.dark.content[5]),
+            6: hexToRgbVar(tokens.base.dark.content[6])
+          }
+        }
       },
       colors: {
         'belt-white': tokens.belt.background.white,
@@ -113,7 +114,9 @@ export const defaultTheme: Config = {
         '4xl': tokens.font.size.xl
       }
     }
-  }
+  },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require('@mertasan/tailwindcss-variables')({ variablePrefix: '--eduzz-ui-layout' })]
 };
 
 export default function createTheme(
@@ -164,5 +167,3 @@ function resolveColor(color?: BrandColor | `#${string}`) {
     secondary: tokens.brands[brandColor]?.secondary.pure ?? defaultColor.secondary
   };
 }
-
-writeCssThemeFile();
