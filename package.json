@@ -1,7 +1,7 @@
 {
   "name": "@eduzz/ui-tailwind-theme",
   "description": "Eduzz UI: Tailwind Theme",
-  "version": "1.1.0-beta.7",
+  "version": "1.1.0-beta.8",
   "keywords": [
     "eduzz",
     "tokens",
@@ -29,7 +29,7 @@
     "update-deps": "yarn ncu -u"
   },
   "dependencies": {
-    "@eduzz/ui-tokens": "^1.2.1",
+    "@eduzz/ui-tokens": "^1.2.2",
     "@mertasan/tailwindcss-variables": "^2.7.0",
     "lodash-es": "^4"
   },
