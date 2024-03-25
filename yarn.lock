@@ -22,10 +22,10 @@
   resolved "https://registry.yarnpkg.com/@eduzz/eslint-config/-/eslint-config-1.0.0.tgz#97180c2b37e1be93977f91725e4e9759cd3422b3"
   integrity sha512-Q2PMV1ddPI6ECdOpCiaAf4UxVo4Sf4usImvGRfQybDKzMDxUPHEocIMRjUe8ULPNfAnaV9Zgw20oGtUEUhkACg==
 
-"@eduzz/ui-tokens@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@eduzz/ui-tokens/-/ui-tokens-1.2.0.tgz#030642a5079684957fb35f40cc5530baf703ee2b"
-  integrity sha512-RqmY2XCMNNCtN4y2oSYe4Ra8WyMz0BrCtOja/v8z0qc2JHfuyiKpl8tfmmQxkWqbICtE6nikCYjELjW1J+V8sg==
+"@eduzz/ui-tokens@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@eduzz/ui-tokens/-/ui-tokens-1.2.1.tgz#741e29b2823ed96e75ac790b1fcc1615315dd620"
+  integrity sha512-6g2nQuH6eaNylkT1ddIqYiKoC2SggyOELHw71V/8gdJEjRPkR+8B20rfuUR6e9WSCS3I7HOCagr5dx44EdaqYw==
 
 "@esbuild/android-arm64@0.18.14":
   version "0.18.14"
