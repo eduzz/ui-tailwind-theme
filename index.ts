@@ -22,45 +22,43 @@ export const defaultTheme: Config = {
       },
       variables: {
         'DEFAULT': {
-          'background-color': {
-            1: hexToRgbVar(tokens.base.light.background[1]),
-            2: hexToRgbVar(tokens.base.light.background[2]),
-            3: hexToRgbVar(tokens.base.light.background[3]),
-            4: hexToRgbVar(tokens.base.light.background[4])
+          surface: {
+            subtle: hexToRgbVar(tokens.base.light.surface.subtle),
+            default: hexToRgbVar(tokens.base.light.surface.default),
+            disabled: hexToRgbVar(tokens.base.light.surface.disabled)
           },
-          'outline-color': {
-            1: hexToRgbVar(tokens.base.light.outline[1]),
-            2: hexToRgbVar(tokens.base.light.outline[2]),
-            3: hexToRgbVar(tokens.base.light.outline[3])
+          outline: {
+            default: hexToRgbVar(tokens.base.light.outline.default),
+            disabled: hexToRgbVar(tokens.base.light.outline.disabled),
+            darker: hexToRgbVar(tokens.base.light.outline.darker)
           },
-          'content-color': {
-            1: hexToRgbVar(tokens.base.light.content[1]),
-            2: hexToRgbVar(tokens.base.light.content[2]),
-            3: hexToRgbVar(tokens.base.light.content[3]),
-            4: hexToRgbVar(tokens.base.light.content[4]),
-            5: hexToRgbVar(tokens.base.light.content[5]),
-            6: hexToRgbVar(tokens.base.light.content[6])
+          content: {
+            title: hexToRgbVar(tokens.base.light.content.title),
+            body: hexToRgbVar(tokens.base.light.content.body),
+            subtitle: hexToRgbVar(tokens.base.light.content.subtitle),
+            caption: hexToRgbVar(tokens.base.light.content.caption),
+            negative: hexToRgbVar(tokens.base.light.content.negative),
+            disabled: hexToRgbVar(tokens.base.light.content.disabled)
           }
         },
         'body[data-eduzz-theme="dark"]': {
-          'background-color': {
-            1: hexToRgbVar(tokens.base.dark.background[1]),
-            2: hexToRgbVar(tokens.base.dark.background[2]),
-            3: hexToRgbVar(tokens.base.dark.background[3]),
-            4: hexToRgbVar(tokens.base.dark.background[4])
+          surface: {
+            subtle: hexToRgbVar(tokens.base.dark.surface.subtle),
+            default: hexToRgbVar(tokens.base.dark.surface.default),
+            disabled: hexToRgbVar(tokens.base.dark.surface.disabled)
           },
-          'outline-color': {
-            1: hexToRgbVar(tokens.base.dark.outline[1]),
-            2: hexToRgbVar(tokens.base.dark.outline[2]),
-            3: hexToRgbVar(tokens.base.dark.outline[3])
+          outline: {
+            default: hexToRgbVar(tokens.base.dark.outline.default),
+            disabled: hexToRgbVar(tokens.base.dark.outline.disabled),
+            darker: hexToRgbVar(tokens.base.dark.outline.darker)
           },
-          'content-color': {
-            1: hexToRgbVar(tokens.base.dark.content[1]),
-            2: hexToRgbVar(tokens.base.dark.content[2]),
-            3: hexToRgbVar(tokens.base.dark.content[3]),
-            4: hexToRgbVar(tokens.base.dark.content[4]),
-            5: hexToRgbVar(tokens.base.dark.content[5]),
-            6: hexToRgbVar(tokens.base.dark.content[6])
+          content: {
+            title: hexToRgbVar(tokens.base.dark.content.title),
+            body: hexToRgbVar(tokens.base.dark.content.body),
+            subtitle: hexToRgbVar(tokens.base.dark.content.subtitle),
+            caption: hexToRgbVar(tokens.base.dark.content.caption),
+            negative: hexToRgbVar(tokens.base.dark.content.negative),
+            disabled: hexToRgbVar(tokens.base.dark.content.disabled)
           }
         }
       },
@@ -77,24 +75,23 @@ export const defaultTheme: Config = {
         'belt-green-foreground': tokens.belt.foreground.green,
         'belt-black-foreground': tokens.belt.foreground.black,
         'belt-golden-foreground': tokens.belt.foreground.golden,
-        'background': {
-          1: 'rgb(var(--eduzz-ui-layout-background-color-1) / <alpha-value>)',
-          2: 'rgb(var(--eduzz-ui-layout-background-color-2) / <alpha-value>)',
-          3: 'rgb(var(--eduzz-ui-layout-background-color-3) / <alpha-value>)',
-          4: 'rgb(var(--eduzz-ui-layout-background-color-4) / <alpha-value>)'
+        'surface': {
+          subtle: 'rgb(var(--eduzz-ui-layout-surface-subtle) / <alpha-value>)',
+          default: 'rgb(var(--eduzz-ui-layout-surface-default) / <alpha-value>)',
+          disabled: 'rgb(var(--eduzz-ui-layout-surface-disabled) / <alpha-value>)'
         },
         'outline': {
-          1: 'rgb(var(--eduzz-ui-layout-outline-color-1) / <alpha-value>)',
-          2: 'rgb(var(--eduzz-ui-layout-outline-color-2) / <alpha-value>)',
-          3: 'rgb(var(--eduzz-ui-layout-outline-color-3) / <alpha-value>)'
+          default: 'rgb(var(--eduzz-ui-layout-outline-default) / <alpha-value>)',
+          disabled: 'rgb(var(--eduzz-ui-layout-outline-disabled) / <alpha-value>)',
+          darker: 'rgb(var(--eduzz-ui-layout-outline-darker) / <alpha-value>)'
         },
         'content': {
-          1: 'rgb(var(--eduzz-ui-layout-content-color-1) / <alpha-value>)',
-          2: 'rgb(var(--eduzz-ui-layout-content-color-2) / <alpha-value>)',
-          3: 'rgb(var(--eduzz-ui-layout-content-color-3) / <alpha-value>)',
-          4: 'rgb(var(--eduzz-ui-layout-content-color-4) / <alpha-value>)',
-          5: 'rgb(var(--eduzz-ui-layout-content-color-5) / <alpha-value>)',
-          6: 'rgb(var(--eduzz-ui-layout-content-color-6) / <alpha-value>)'
+          title: 'rgb(var(--eduzz-ui-layout-content-title) / <alpha-value>)',
+          body: 'rgb(var(--eduzz-ui-layout-content-body) / <alpha-value>)',
+          subtitle: 'rgb(var(--eduzz-ui-layout-content-subtitle) / <alpha-value>)',
+          caption: 'rgb(var(--eduzz-ui-layout-content-caption) / <alpha-value>)',
+          negative: 'rgb(var(--eduzz-ui-layout-content-negative) / <alpha-value>)',
+          disabled: 'rgb(var(--eduzz-ui-layout-content-disabled) / <alpha-value>)'
         }
       },
       screens: {
