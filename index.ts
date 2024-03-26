@@ -4,6 +4,8 @@ import type { Config } from 'tailwindcss/types/config';
 
 import tokens from '@eduzz/ui-tokens';
 
+import { hexToRgbVar } from './utils/hextToRgb';
+
 type BrandColor = keyof typeof tokens.brands;
 const defaultColor = {
   primary: `var(--eduzz-theme-primary, ${tokens.brands.eduzz.primary.pure})`,
@@ -12,11 +14,53 @@ const defaultColor = {
 
 export const defaultTheme: Config = {
   content: ['./src/**/*.{ts,tsx}'],
-  darkMode: ['class', 'body.eduzz-ui-dark-theme'],
+  darkMode: ['class', 'body[data-eduzz-theme="dark"]'],
   theme: {
     extend: {
       fontFamily: {
         sans: [tokens.font.family.base, ...twDefaultTheme.fontFamily.sans]
+      },
+      variables: {
+        'DEFAULT': {
+          surface: {
+            subtle: hexToRgbVar(tokens.base.light.surface.subtle),
+            default: hexToRgbVar(tokens.base.light.surface.default),
+            disabled: hexToRgbVar(tokens.base.light.surface.disabled)
+          },
+          outline: {
+            default: hexToRgbVar(tokens.base.light.outline.default),
+            disabled: hexToRgbVar(tokens.base.light.outline.disabled),
+            darker: hexToRgbVar(tokens.base.light.outline.darker)
+          },
+          content: {
+            title: hexToRgbVar(tokens.base.light.content.title),
+            body: hexToRgbVar(tokens.base.light.content.body),
+            subtitle: hexToRgbVar(tokens.base.light.content.subtitle),
+            caption: hexToRgbVar(tokens.base.light.content.caption),
+            negative: hexToRgbVar(tokens.base.light.content.negative),
+            disabled: hexToRgbVar(tokens.base.light.content.disabled)
+          }
+        },
+        'body[data-eduzz-theme="dark"]': {
+          surface: {
+            subtle: hexToRgbVar(tokens.base.dark.surface.subtle),
+            default: hexToRgbVar(tokens.base.dark.surface.default),
+            disabled: hexToRgbVar(tokens.base.dark.surface.disabled)
+          },
+          outline: {
+            default: hexToRgbVar(tokens.base.dark.outline.default),
+            disabled: hexToRgbVar(tokens.base.dark.outline.disabled),
+            darker: hexToRgbVar(tokens.base.dark.outline.darker)
+          },
+          content: {
+            title: hexToRgbVar(tokens.base.dark.content.title),
+            body: hexToRgbVar(tokens.base.dark.content.body),
+            subtitle: hexToRgbVar(tokens.base.dark.content.subtitle),
+            caption: hexToRgbVar(tokens.base.dark.content.caption),
+            negative: hexToRgbVar(tokens.base.dark.content.negative),
+            disabled: hexToRgbVar(tokens.base.dark.content.disabled)
+          }
+        }
       },
       colors: {
         'belt-white': tokens.belt.background.white,
@@ -30,7 +74,25 @@ export const defaultTheme: Config = {
         'belt-orange-foreground': tokens.belt.foreground.orange,
         'belt-green-foreground': tokens.belt.foreground.green,
         'belt-black-foreground': tokens.belt.foreground.black,
-        'belt-golden-foreground': tokens.belt.foreground.golden
+        'belt-golden-foreground': tokens.belt.foreground.golden,
+        'surface': {
+          subtle: 'rgb(var(--eduzz-ui-layout-surface-subtle) / <alpha-value>)',
+          default: 'rgb(var(--eduzz-ui-layout-surface-default) / <alpha-value>)',
+          disabled: 'rgb(var(--eduzz-ui-layout-surface-disabled) / <alpha-value>)'
+        },
+        'outline': {
+          default: 'rgb(var(--eduzz-ui-layout-outline-default) / <alpha-value>)',
+          disabled: 'rgb(var(--eduzz-ui-layout-outline-disabled) / <alpha-value>)',
+          darker: 'rgb(var(--eduzz-ui-layout-outline-darker) / <alpha-value>)'
+        },
+        'content': {
+          title: 'rgb(var(--eduzz-ui-layout-content-title) / <alpha-value>)',
+          body: 'rgb(var(--eduzz-ui-layout-content-body) / <alpha-value>)',
+          subtitle: 'rgb(var(--eduzz-ui-layout-content-subtitle) / <alpha-value>)',
+          caption: 'rgb(var(--eduzz-ui-layout-content-caption) / <alpha-value>)',
+          negative: 'rgb(var(--eduzz-ui-layout-content-negative) / <alpha-value>)',
+          disabled: 'rgb(var(--eduzz-ui-layout-content-disabled) / <alpha-value>)'
+        }
       },
       screens: {
         'sm': tokens.breakpoints.sm,
@@ -49,7 +111,9 @@ export const defaultTheme: Config = {
         '4xl': tokens.font.size.xl
       }
     }
-  }
+  },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require('@mertasan/tailwindcss-variables')({ variablePrefix: '--eduzz-ui-layout' })]
 };
 
 export default function createTheme(

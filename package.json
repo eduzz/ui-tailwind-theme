@@ -1,7 +1,7 @@
 {
   "name": "@eduzz/ui-tailwind-theme",
   "description": "Eduzz UI: Tailwind Theme",
-  "version": "1.0.0",
+  "version": "1.1.0-beta.8",
   "keywords": [
     "eduzz",
     "tokens",
@@ -21,7 +21,7 @@
     "url": "https://github.com/eduzz/ui-tailwind-theme/issues"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "clean": "git add . && git clean -fdx . -e node_modules",
     "prebuild": "yarn clean && yarn lint",
     "build": "yarn tsc -p tsconfig.json",
@@ -29,12 +29,14 @@
     "update-deps": "yarn ncu -u"
   },
   "dependencies": {
-    "@eduzz/ui-tokens": "^1.0.0",
+    "@eduzz/ui-tokens": "^1.2.2",
+    "@mertasan/tailwindcss-variables": "^2.7.0",
     "lodash-es": "^4"
   },
   "devDependencies": {
     "@eduzz/eslint-config": "^1.0.0",
     "@types/lodash-es": "^4",
+    "@types/node": "^20.11.28",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
