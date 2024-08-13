@@ -63,6 +63,54 @@ export const defaultTheme: Config = {
         }
       },
       colors: {
+        'red': {
+          100: tokens.antd.red[100],
+          200: tokens.antd.red[200],
+          300: tokens.antd.red[300],
+          400: tokens.antd.red[400],
+          500: tokens.antd.red[500],
+          600: tokens.antd.red[600],
+          700: tokens.antd.red[700],
+          800: tokens.antd.red[800],
+          900: tokens.antd.red[900],
+          950: tokens.antd.red[950]
+        },
+        'green': {
+          100: tokens.antd.green[100],
+          200: tokens.antd.green[200],
+          300: tokens.antd.green[300],
+          400: tokens.antd.green[400],
+          500: tokens.antd.green[500],
+          600: tokens.antd.green[600],
+          700: tokens.antd.green[700],
+          800: tokens.antd.green[800],
+          900: tokens.antd.green[900],
+          950: tokens.antd.green[950]
+        },
+        'blue': {
+          100: tokens.antd.blue[100],
+          200: tokens.antd.blue[200],
+          300: tokens.antd.blue[300],
+          400: tokens.antd.blue[400],
+          500: tokens.antd.blue[500],
+          600: tokens.antd.blue[600],
+          700: tokens.antd.blue[700],
+          800: tokens.antd.blue[800],
+          900: tokens.antd.blue[900],
+          950: tokens.antd.blue[950]
+        },
+        'orange': {
+          100: tokens.antd.orange[100],
+          200: tokens.antd.orange[200],
+          300: tokens.antd.orange[300],
+          400: tokens.antd.orange[400],
+          500: tokens.antd.orange[500],
+          600: tokens.antd.orange[600],
+          700: tokens.antd.orange[700],
+          800: tokens.antd.orange[800],
+          900: tokens.antd.orange[900],
+          950: tokens.antd.orange[950]
+        },
         'belt-white': tokens.belt.background.white,
         'belt-red': tokens.belt.background.red,
         'belt-orange': tokens.belt.background.orange,
