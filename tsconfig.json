@@ -1,34 +1,28 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "outDir": ".",
-    "declaration": true,
-    "declarationDir": ".",
-    "module": "CommonJS",
-    "target": "ES6",
-    "experimentalDecorators": true,
-    "lib": ["es2020", "dom"],
-    "sourceMap": false,
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
-    "importHelpers": true,
+   "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
+    "module": "ES2020",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
   },
   "include": [
     "./**/*.tsx",
     "./**/*.ts"
-  ],
+, "vite.config.mts"  ],
   "exclude": [
     "*.d.ts",
     "./**/*.d.ts",
-    "vite.config.ts",
     "dist",
     "node_modules"
   ]

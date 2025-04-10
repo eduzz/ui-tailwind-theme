@@ -8,7 +8,7 @@ Aplica os Tokens de UI da Eduzz no Tailwind.
 ## Instalação
 
 ```bash
-yarn add @eduzz/ui-tailwind-theme
+pnpm add @eduzz/ui-tailwind-theme
 ```
 
 ## Uso
