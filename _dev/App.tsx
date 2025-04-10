@@ -1,9 +1,9 @@
 function App() {
   return (
-    <main className='h-screen w-full overflow-auto bg-surface-default'>
+    <main className='bg-surface-default h-screen w-full overflow-auto'>
       <header className='flex w-full justify-end p-4'>
         <button
-          className='rounded-sm bg-primary px-2 py-1 text-content-negative dark:bg-secondary'
+          className='bg-primary text-content-negative dark:bg-secondary rounded-xs px-2 py-1'
           onClick={() => {
             const body = document.querySelector('body');
 
@@ -21,9 +21,9 @@ function App() {
         </button>
       </header>
       <section>
-        <div className='block bg-surface-subtle p-4'>
+        <div className='bg-surface-subtle block p-4'>
           <p className='text-primary dark:text-secondary'>Esse texto muda de cor com o tema</p>
-          <p className='mt-2 text-content-body'>
+          <p className='text-content-body mt-2'>
             Esse lorem isum dolor sit amet consectur também mas sem o <code>dark:</code>
           </p>
         </div>
