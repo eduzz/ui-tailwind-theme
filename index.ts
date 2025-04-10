@@ -1,4 +1,5 @@
 import merge from 'lodash-es/merge';
+import { type Config as TailwindConfig } from 'tailwindcss';
 import twDefaultTheme from 'tailwindcss/defaultTheme';
 
 import tokens from '@eduzz/ui-tokens';
@@ -6,7 +7,6 @@ import tokens from '@eduzz/ui-tokens';
 import { hexToRgbVar } from './utils/hextToRgb';
 
 type BrandColor = keyof typeof tokens.brands;
-type Config = typeof twDefaultTheme;
 const defaultColor = {
   primary: `var(--eduzz-theme-primary, ${tokens.brands.eduzz.primary.pure})`,
   secondary: `var(--eduzz-theme-secondary, ${tokens.brands.eduzz.secondary.pure})`
@@ -165,12 +165,12 @@ export const defaultTheme = {
 };
 
 export default function createTheme(
-  config?: Partial<Config> & {
+  config?: Partial<TailwindConfig> & {
     primaryColor?: BrandColor | `#${string}`;
     primaryColorDark?: `#${string}`;
   }
-) {
-  const { primaryColor, primaryColorDark, ...override } = config ?? {};
+): TailwindConfig {
+  const { primaryColor, primaryColorDark, ...override } = config!;
 
   const colors = resolveColor(primaryColor);
   const darkColors = resolveColor(primaryColorDark);
@@ -188,7 +188,7 @@ export default function createTheme(
           }
         }
       }
-    } as Partial<Config>,
+    } as Partial<TailwindConfig>,
     override
   );
 }
