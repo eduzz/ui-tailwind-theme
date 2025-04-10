@@ -1,7 +1,9 @@
 node_modules
 *.js
 !*.config.js
+vite.config.mjs
 *.d.ts
+*.d.mts
 dist
 !.prettierrc.js
 .DS_Store
