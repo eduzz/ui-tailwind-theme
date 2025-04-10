@@ -55,8 +55,7 @@ jobs:
             packages-
       - name: Install Pnpm
         run: npm i -g pnpm
-      - name: Pnpm
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+      - name: Pnpm Install
         run: pnpm install
       - name: Lint
         run: npm run lint
