@@ -1,18 +1,18 @@
 import merge from 'lodash-es/merge';
 import twDefaultTheme from 'tailwindcss/defaultTheme';
-import type { Config } from 'tailwindcss/types/config';
 
 import tokens from '@eduzz/ui-tokens';
 
 import { hexToRgbVar } from './utils/hextToRgb';
 
 type BrandColor = keyof typeof tokens.brands;
+type Config = typeof twDefaultTheme;
 const defaultColor = {
   primary: `var(--eduzz-theme-primary, ${tokens.brands.eduzz.primary.pure})`,
   secondary: `var(--eduzz-theme-secondary, ${tokens.brands.eduzz.secondary.pure})`
 };
 
-export const defaultTheme: Config = {
+export const defaultTheme = {
   content: ['./src/**/*.{ts,tsx}'],
   darkMode: ['class', 'body[data-eduzz-theme="dark"]'],
   theme: {
