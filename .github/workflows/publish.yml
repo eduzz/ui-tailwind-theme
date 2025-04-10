@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+      - feature*
+      - release*
+      - hotfix*
 
 concurrency: 
   group: publish-${{ github.ref }}
@@ -32,10 +35,10 @@ jobs:
       SKIP: ${{ steps.skip-release.outputs.SKIP }}
       CURRENT_VERSION: ${{ steps.current-version.outputs.CURRENT_VERSION }}
   
-  publish:
+  build:
     needs: [should-release]
     if: needs.should-release.outputs.SKIP != 'true'
-    name: Publish
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Clone
@@ -55,17 +58,25 @@ jobs:
       - name: Pnpm
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: pnpm install
-      - name: Setup NPM Registry
-        run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}' > ~/.npmrc && npm config get registry && npm whoami
       - name: Lint
         run: npm run lint
       - name: Build
         run: npm run build
+
+  publish:
+    needs: [build]
+    if: github.ref == 'refs/heads/master' && needs.should-release.outputs.SKIP != 'true'
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone
+        uses: actions/checkout@v3
+      - name: Node
+        uses: actions/setup-node@v3
+      - name: Setup NPM Registry
+        run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}' > ~/.npmrc && npm config get registry && npm whoami
       - name: Publish
         run: npm publish
-      - name: Check Skip Release
-        id: skip-release
-        run: echo 'SKIP='$(cat .skip-release) >> $GITHUB_OUTPUT
       - name: Create tag
         uses: actions/github-script@v3
         with:
@@ -77,5 +88,3 @@ jobs:
               ref: "refs/tags/v${{ needs.should-release.outputs.CURRENT_VERSION }}",
               sha: context.sha
             })
-    outputs:
-      SKIP: ${{ steps.skip-release.outputs.SKIP }}
