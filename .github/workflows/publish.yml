@@ -49,7 +49,18 @@ jobs:
         if: failure()
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          -d '{
+            "embeds": [
+              {
+                "title": "ui-tailwind-theme/${{ github.ref_name }}",
+                "description": "** FAILED ** / Deu ruim =[",
+                "color": ff0000,
+                "footer": {
+                  "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}",
+                }
+              }
+            ]
+          }' \
           "${{ secrets.PI_DISCORD_WEBHOOK }}"
       - name: Cache 
         id: cache-nodemodules
@@ -72,12 +83,6 @@ jobs:
         with:
           name: build-artifact
           path: ./
-      - name: Discord Message on Failure
-        if: failure()
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
-          "${{ secrets.PI_DISCORD_WEBHOOK }}"
 
   publish:
     needs: [build, should-release]
@@ -93,7 +98,18 @@ jobs:
         if: failure()
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          -d '{
+            "embeds": [
+              {
+                "title": "ui-tailwind-theme/${{ github.ref_name }}",
+                "description": "** FAILED ** / Deu ruim =[",
+                "color": ff0000,
+                "footer": {
+                  "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}",
+                }
+              }
+            ]
+          }' \
           "${{ secrets.PI_DISCORD_WEBHOOK }}"
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
@@ -122,6 +138,17 @@ jobs:
     steps:
       - name: Discord Message on Success
         run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n🎨 **DEPLOYED** / Uma linha de CSS!\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+        curl -X POST -H "Content-Type: application/json" \
+          -d '{
+            "embeds": [
+              {
+                "title": "ui-tailwind-theme/${{ github.ref_name }}",
+                "description": "🎨 **DEPLOYED** / Uma linha de CSS!",
+                "color": 00ff00,
+                "footer": {
+                  "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}",
+                }
+              }
+            ]
+          }' \
           "${{ secrets.PI_DISCORD_WEBHOOK }}"
