@@ -48,6 +48,7 @@ jobs:
       - name: Discord Message on Failure
         if: failure()
         run: |
+          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | tr -d '\n')
           curl -X POST -H "Content-Type: application/json" \
           -d '{
             "embeds": [
@@ -57,7 +58,7 @@ jobs:
                 "description": "** FAILED ** / Deu ruim =[",
                 "color": 16711680,
                 "footer": {
-                  "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}"
+                  "text": "${{ github.sha }} - '"$COMMIT_MESSAGE"'"
                 }
               }
             ]
@@ -98,6 +99,7 @@ jobs:
       - name: Discord Message on Failure
         if: failure()
         run: |
+          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | tr -d '\n')
           curl -X POST -H "Content-Type: application/json" \
           -d '{
             "embeds": [
@@ -107,7 +109,7 @@ jobs:
                 "description": "** FAILED ** / Deu ruim =[",
                 "color": 16711680,
                 "footer": {
-                  "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}"
+                  "text": "${{ github.sha }} - '"$COMMIT_MESSAGE"'"
                 }
               }
             ]
@@ -140,6 +142,7 @@ jobs:
     steps:
       - name: Discord Message on Success
         run: |
+          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | tr -d '\n')
           curl -X POST -H "Content-Type: application/json" \
           -d '{
             "embeds": [
@@ -149,7 +152,7 @@ jobs:
                 "description": "🎨 **DEPLOYED** / Uma linha de CSS!",
                 "color": 65280,
                 "footer": {
-                  "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}"
+                  "text": "${{ github.sha }} - '"$COMMIT_MESSAGE"'"
                 }
               }
             ]
