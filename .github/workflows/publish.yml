@@ -61,6 +61,17 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: ./
+      - name: Discord Message on Failure
+        if: failure()
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          "${{ secrets.PI_DISCORD_WEBHOOK }}"
 
   publish:
     needs: [build]
@@ -72,10 +83,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Node
         uses: actions/setup-node@v3
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
       - name: Setup NPM Registry
         run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}' > ~/.npmrc && npm config get registry && npm whoami
       - name: Publish
-        run: npm publish
+        run: npm publish ./
       - name: Create tag
         uses: actions/github-script@v3
         with:
@@ -87,3 +102,20 @@ jobs:
               ref: "refs/tags/v${{ needs.should-release.outputs.CURRENT_VERSION }}",
               sha: context.sha
             })
+      - name: Discord Message on Failure
+        if: failure()
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          "${{ secrets.PI_DISCORD_WEBHOOK }}"
+  notify:
+    needs: [should-release, build, publish]
+    if: always()
+    name: Notify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Message on Success
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n🎨 **DEPLOYED** / Uma linha de CSS!\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          "${{ secrets.PI_DISCORD_WEBHOOK }}"
