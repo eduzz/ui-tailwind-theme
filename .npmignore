@@ -11,6 +11,8 @@ tsconfig.json
 !/**/**/*.d.ts
 .git
 *.config.js
+*.config.mjs
+*.config.mts
 *.html
 _dev
 !style.css
