@@ -48,6 +48,7 @@ jobs:
       - name: Discord Message on Failure
         if: failure()
         run: |
+          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | tr -d '\n')
           curl -X POST -H "Content-Type: application/json" \
           -d '{
             "embeds": [
