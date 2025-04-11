@@ -70,7 +70,7 @@ jobs:
         if: failure()
         uses: discord-actions/message@v2
         with:
-          webhookUrl: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          webhookUrl: "${{ secrets.PI_DISCORD_WEBHOOK }}"
           message: "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"
           username: "GitHub Actions"
           avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
@@ -108,7 +108,7 @@ jobs:
         if: failure()
         uses: discord-actions/message@v2
         with:
-          webhookUrl: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          webhookUrl: "${{ secrets.PI_DISCORD_WEBHOOK }}"
           message: "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"
           username: "GitHub Actions"
           avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
@@ -121,7 +121,7 @@ jobs:
       - name: Discord Message on Success
         uses: discord-actions/message@v2
         with:
-          webhookUrl: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          webhookUrl: "${{ secrets.PI_DISCORD_WEBHOOK }}"
           message: "Maneiro"
           username: "GitHub Actions"
           avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
