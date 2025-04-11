@@ -141,7 +141,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Discord Message on Success
-        uses: vitorvmrs/discord-send-embed@20695c6e02a956cceb2c02b2f4ad40c8722a744a
+        uses: vitorvmrs/discord-send-embed@9351e64705943a3a72decd50df587acc8bc89e1c
         with:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
           title: "ui-tailwind-theme/${{ github.ref_name }}"
