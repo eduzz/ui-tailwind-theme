@@ -80,7 +80,7 @@ jobs:
           "${{ secrets.PI_DISCORD_WEBHOOK }}"
 
   publish:
-    needs: [build]
+    needs: [build, should-release]
     if: github.ref == 'refs/heads/master' && needs.should-release.outputs.SKIP != 'true'
     name: Publish
     runs-on: ubuntu-latest
