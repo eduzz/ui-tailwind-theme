@@ -68,12 +68,10 @@ jobs:
           path: ./
       - name: Discord Message on Failure
         if: failure()
-        uses: discord-actions/message@v2
-        with:
-          webhookUrl: "${{ secrets.PI_DISCORD_WEBHOOK }}"
-          message: "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"
-          username: "GitHub Actions"
-          avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          "${{ secrets.PI_DISCORD_WEBHOOK }}"
 
   publish:
     needs: [build]
@@ -106,12 +104,10 @@ jobs:
             })
       - name: Discord Message on Failure
         if: failure()
-        uses: discord-actions/message@v2
-        with:
-          webhookUrl: "${{ secrets.PI_DISCORD_WEBHOOK }}"
-          message: "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"
-          username: "GitHub Actions"
-          avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n❌ ** FAILED ** / Deu ruim =[\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          "${{ secrets.PI_DISCORD_WEBHOOK }}"
   notify:
     needs: [should-release, build, publish]
     if: always()
@@ -119,9 +115,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Discord Message on Success
-        uses: discord-actions/message@v2
-        with:
-          webhookUrl: "https://discord.com/api/webhooks/1360220021975945256/TpJJLsP_iEyndoCTXiK52RELLy1ypiXDOuCQKnJPcr4OK82bqMi1UcIyDvU7pmpKtVy5"
-          message: "Maneiro"
-          username: "GitHub Actions"
-          avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"content": "## ui-tailwind-theme/${{ github.ref_name }}\n🎨 **DEPLOYED** / Uma linha de CSS!\n${{ github.sha }} - ${{ github.event.head_commit.message }}"}' \
+          "${{ secrets.PI_DISCORD_WEBHOOK }}"
