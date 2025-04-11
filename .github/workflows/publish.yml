@@ -118,6 +118,13 @@ jobs:
     name: Notify
     runs-on: ubuntu-latest
     steps:
+      - name: Capture Failure Reason
+          if: failure()
+          run: |
+            echo "FAILURE_REASON=Unknown error occurred." >> $GITHUB_ENV
+            if [ -f /tmp/github_action_error.log ]; then
+              echo "FAILURE_REASON=$(cat /tmp/github_action_error.log)" >> $GITHUB_ENV
+            fi
       - name: Discord Message on Success
         uses: discord-actions/message@v2
         with:
@@ -125,6 +132,3 @@ jobs:
           message: "Maneiro"
           username: "GitHub Actions"
           avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-      - name: Set Failure Message
-        if: failure()
-        run: echo "FAILURE_MESSAGE=Job failed in step: ${{ failure() }}" >> $GITHUB_ENV
