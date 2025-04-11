@@ -125,3 +125,6 @@ jobs:
           message: "Maneiro"
           username: "GitHub Actions"
           avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+      - name: Set Failure Message
+        if: failure()
+        run: echo "FAILURE_MESSAGE=Job failed in step: ${{ failure() }}" >> $GITHUB_ENV
