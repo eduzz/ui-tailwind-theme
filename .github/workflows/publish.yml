@@ -47,7 +47,7 @@ jobs:
         uses: actions/setup-node@v3
       - name: Discord Message on Failure
         if: failure()
-        uses: vitorvmrs/discord-send-embed@9351e64705943a3a72decd50df587acc8bc89e1c
+        uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
         with:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
           title: "ui-tailwind-theme/${{ github.ref_name }}"
@@ -89,7 +89,7 @@ jobs:
         uses: actions/setup-node@v3
       - name: Discord Message on Failure
         if: failure()
-        uses: vitorvmrs/discord-send-embed@9351e64705943a3a72decd50df587acc8bc89e1c
+        uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
         with:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
           title: "ui-tailwind-theme/${{ github.ref_name }}"
@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Discord Message on Success
-        uses: vitorvmrs/discord-send-embed@9351e64705943a3a72decd50df587acc8bc89e1c
+        uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
         with:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
           title: "ui-tailwind-theme/${{ github.ref_name }}"
