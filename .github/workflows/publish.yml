@@ -47,23 +47,14 @@ jobs:
         uses: actions/setup-node@v3
       - name: Discord Message on Failure
         if: failure()
-        run: |
-          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | tr -d '\n')
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{
-            "embeds": [
-              {
-                "title": "ui-tailwind-theme/${{ github.ref_name }}",
-                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                "description": "** FAILED ** / Deu ruim =[",
-                "color": 16711680,
-                "footer": {
-                  "text": "${{ github.sha }} - '"$COMMIT_MESSAGE"'"
-                }
-              }
-            ]
-          }' \
-          "${{ secrets.PI_DISCORD_WEBHOOK }}"
+        uses: vitorvmrs/discord-send-embed@9351e64705943a3a72decd50df587acc8bc89e1c
+        with:
+          webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          title: "ui-tailwind-theme/${{ github.ref_name }}"
+          url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          description: "❌ FAILED / Deu ruim =["
+          color: 16711680
+          footer-text: "${{ github.sha }} - ${{ github.event.head_commit.message }}"
       - name: Cache 
         id: cache-nodemodules
         uses: actions/cache@v3
@@ -98,23 +89,14 @@ jobs:
         uses: actions/setup-node@v3
       - name: Discord Message on Failure
         if: failure()
-        run: |
-          COMMIT_MESSAGE=$(echo "${{ github.event.head_commit.message }}" | tr -d '\n')
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{
-            "embeds": [
-              {
-                "title": "ui-tailwind-theme/${{ github.ref_name }}",
-                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                "description": "** FAILED ** / Deu ruim =[",
-                "color": 16711680,
-                "footer": {
-                  "text": "${{ github.sha }} - '"$COMMIT_MESSAGE"'"
-                }
-              }
-            ]
-          }' \
-          "${{ secrets.PI_DISCORD_WEBHOOK }}"
+        uses: vitorvmrs/discord-send-embed@9351e64705943a3a72decd50df587acc8bc89e1c
+        with:
+          webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          title: "ui-tailwind-theme/${{ github.ref_name }}"
+          url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          description: "❌ FAILED / Deu ruim =["
+          color: 16711680
+          footer-text: "${{ github.sha }} - ${{ github.event.head_commit.message }}"
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
@@ -146,6 +128,6 @@ jobs:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
           title: "ui-tailwind-theme/${{ github.ref_name }}"
           url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          description: "🎨 **DEPLOYED** / Uma linha de CSS =]"
+          description: "🎨 DEPLOYED / Uma linha de CSS =]"
           color: 65280
-          footer-text: "${{ github.sha }} - ${{ needs.should-release.outputs.CURRENT_VERSION }}"
+          footer-text: "${{ github.sha }} - ${{ github.event.head_commit.message }}"
