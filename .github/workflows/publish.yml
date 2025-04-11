@@ -53,6 +53,7 @@ jobs:
             "embeds": [
               {
                 "title": "ui-tailwind-theme/${{ github.ref_name }}",
+                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
                 "description": "** FAILED ** / Deu ruim =[",
                 "color": 16711680,
                 "footer": {
@@ -102,6 +103,7 @@ jobs:
             "embeds": [
               {
                 "title": "ui-tailwind-theme/${{ github.ref_name }}",
+                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
                 "description": "** FAILED ** / Deu ruim =[",
                 "color": 16711680,
                 "footer": {
@@ -143,6 +145,7 @@ jobs:
             "embeds": [
               {
                 "title": "ui-tailwind-theme/${{ github.ref_name }}",
+                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
                 "description": "🎨 **DEPLOYED** / Uma linha de CSS!",
                 "color": 65280,
                 "footer": {
