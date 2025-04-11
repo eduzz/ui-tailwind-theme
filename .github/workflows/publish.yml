@@ -122,6 +122,6 @@ jobs:
         uses: discord-actions/message@v2
         with:
           webhookUrl: ${{ secrets.PI_DISCORD_WEBHOOK }}
-          message: "## ui-tailwind-theme/${{ github.ref_name }}\n🎨 **DEPLOYED** / Uma linha de CSS!\n${{ github.sha }} - ${{ github.event.head_commit.message }}"
+          message: "Maneiro"
           username: "GitHub Actions"
           avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
