@@ -138,17 +138,17 @@ jobs:
     steps:
       - name: Discord Message on Success
         run: |
-        curl -X POST -H "Content-Type: application/json" \
-          -d '{
-            "embeds": [
-              {
-                "title": "ui-tailwind-theme/${{ github.ref_name }}",
-                "description": "🎨 **DEPLOYED** / Uma linha de CSS!",
-                "color": 00ff00,
-                "footer": {
-                  "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}",
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{
+              "embeds": [
+                {
+                  "title": "ui-tailwind-theme/${{ github.ref_name }}",
+                  "description": "🎨 **DEPLOYED** / Uma linha de CSS!",
+                  "color": 00ff00,
+                  "footer": {
+                    "text": "${{ github.sha }} - ${{ github.event.head_commit.message }}",
+                  }
                 }
-              }
-            ]
-          }' \
-          "${{ secrets.PI_DISCORD_WEBHOOK }}"
+              ]
+            }' \
+            "${{ secrets.PI_DISCORD_WEBHOOK }}"
