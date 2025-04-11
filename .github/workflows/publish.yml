@@ -118,17 +118,10 @@ jobs:
     name: Notify
     runs-on: ubuntu-latest
     steps:
-      - name: Capture Failure Reason
-          if: failure()
-          run: |
-            echo "FAILURE_REASON=Unknown error occurred." >> $GITHUB_ENV
-            if [ -f /tmp/github_action_error.log ]; then
-              echo "FAILURE_REASON=$(cat /tmp/github_action_error.log)" >> $GITHUB_ENV
-            fi
       - name: Discord Message on Success
         uses: discord-actions/message@v2
         with:
-          webhookUrl: "${{ secrets.PI_DISCORD_WEBHOOK }}"
+          webhookUrl: "https://discord.com/api/webhooks/1360220021975945256/TpJJLsP_iEyndoCTXiK52RELLy1ypiXDOuCQKnJPcr4OK82bqMi1UcIyDvU7pmpKtVy5"
           message: "Maneiro"
           username: "GitHub Actions"
           avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
