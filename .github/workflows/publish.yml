@@ -62,7 +62,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: ./
@@ -86,7 +86,7 @@ jobs:
       - name: Node
         uses: actions/setup-node@v3
       - name: Download Build Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-artifact
       - name: Setup NPM Registry
